@@ -3,7 +3,6 @@ package ru.job4j.iterator;
 import java.util.Iterator;
 
 public class ArrayIt implements Iterator<Integer> {
-
     private final int[] data;
     private int point = 0;
 
