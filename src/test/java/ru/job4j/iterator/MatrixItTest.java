@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.NoSuchElementException;
 
 class MatrixItTest  {
-
     @Test
     void when4El() {
         int[][] in = {
