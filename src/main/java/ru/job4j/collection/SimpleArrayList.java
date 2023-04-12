@@ -5,8 +5,8 @@ import java.util.*;
 public class SimpleArrayList<T> implements SimpleList<T> {
 
     private T[] container;
-    private int size = 0;
-    private int modCount = 0;
+    private int size;
+    private int modCount;
 
     private int point;
     private int expectedModCount;
@@ -26,7 +26,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public T set(int index, T newValue) {
-        Objects.checkIndex(index, size - 1);
+        Objects.checkIndex(index, size);
         T oldValue = container[index];
         container[index] = newValue;
         return oldValue;
@@ -34,7 +34,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public T remove(int index) {
-        Objects.checkIndex(index, size - 1);
+        Objects.checkIndex(index, size);
         T value;
         if (index == size - 1) {
             value = container[index];
