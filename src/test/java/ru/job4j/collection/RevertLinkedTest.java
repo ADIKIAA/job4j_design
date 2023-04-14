@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import java.util.NoSuchElementException;
 
 class RevertLinkedTest {
+
     private RevertLinked<Integer> linked;
 
     @BeforeEach

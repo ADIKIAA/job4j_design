@@ -36,7 +36,6 @@ public class RevertLinked<T> implements Iterable<T> {
         head = prev;
         return true;
     }
-    // [1] -> [2] -> [3]
 
     @Override
     public Iterator<T> iterator() {
@@ -66,10 +65,6 @@ public class RevertLinked<T> implements Iterable<T> {
 
         public Node(T value, Node<T> next) {
             this.value = value;
-            this.next = next;
-        }
-
-        public void setNext(Node<T> next) {
             this.next = next;
         }
     }
