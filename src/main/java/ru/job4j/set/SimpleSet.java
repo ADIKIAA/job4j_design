@@ -12,23 +12,10 @@ public class SimpleSet<T> implements Set<T> {
     @Override
     public boolean add(T value) {
         boolean rsl = false;
-        if (set.size() == 0) {
+        if (!contains(value)) {
             set.add(value);
             rsl = true;
-        } else {
-            boolean d = false;
-            for (T t : set) {
-                d = Objects.equals(t, value);
-                if (d) {
-                    break;
-                }
-            }
-            if (!d) {
-                rsl = true;
-                set.add(value);
-            }
         }
-
         return rsl;
     }
 
