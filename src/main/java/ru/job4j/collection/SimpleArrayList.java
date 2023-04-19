@@ -31,17 +31,15 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     @Override
     public T remove(int index) {
         T value = get(index);
-        if (index == size - 1) {
-            container[index] = null;
-        } else {
+        if (index != size - 1) {
             System.arraycopy(
                     container,
                     index + 1,
                     container,
                     index,
                     container.length - index - 1);
-            container[size - 1] = null;
         }
+        container[size - 1] = null;
         size--;
         modCount++;
         return value;
