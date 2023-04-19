@@ -11,9 +11,6 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
     private int modCount;
     private Node<E> head;
 
-    private int expectedModCount = 0;
-    private Node<E> currentNode;
-
     @Override
     public void add(E value) {
         if (head == null) {
@@ -41,9 +38,10 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
 
     @Override
     public Iterator<E> iterator() {
-        this.expectedModCount = modCount;
-        this.currentNode = head;
         return new Iterator<E>() {
+
+            private int expectedModCount = modCount;
+            private Node<E> currentNode = head;
 
             @Override
             public boolean hasNext() {
