@@ -7,25 +7,30 @@ public class SimpleQueue<T> {
     private SimpleStack<T> in = new SimpleStack<>();
     private SimpleStack<T> out = new SimpleStack<>();
 
-    private int size;
+    private int sizeIn;
+    private int sizeOut;
 
     public T poll() {
-       if (size == 0) {
+       if (sizeIn == 0) {
            throw new NoSuchElementException("Queue is empty");
        }
-       for (T i : in) {
-           out.addFirst(in.deleteFirst());
+       while (sizeIn != 0) {
+           out.push(in.pop());
+           sizeIn--;
+           sizeOut++;
        }
-       T temp = out.deleteFirst();
-       for (T i : out) {
-           in.addFirst(out.deleteFirst());
+       T temp = out.pop();
+       sizeOut--;
+       while (sizeOut != 0) {
+           in.push(out.pop());
+           sizeOut--;
+           sizeIn++;
        }
-       size--;
        return temp;
     }
 
     public void push(T value) {
-        in.addFirst(value);
-        size++;
+        in.push(value);
+        sizeIn++;
     }
 }
