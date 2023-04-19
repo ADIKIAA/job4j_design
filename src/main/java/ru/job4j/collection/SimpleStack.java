@@ -1,15 +1,14 @@
 package ru.job4j.collection;
 
-public class SimpleStack<T> extends ForwardLinked<T> {
+public class SimpleStack<T> {
 
     private ForwardLinked<T> linked = new ForwardLinked<T>();
 
     public T pop() {
-        return deleteFirst();
+        return linked.deleteFirst();
     }
 
     public void push(T value) {
-        addFirst(value);
+        linked.addFirst(value);
     }
-
 }
