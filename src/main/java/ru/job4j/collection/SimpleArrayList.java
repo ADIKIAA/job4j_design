@@ -8,9 +8,6 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     private int size;
     private int modCount;
 
-    private int point;
-    private int expectedModCount;
-
     public SimpleArrayList(int capacity) {
         container = (T[]) new Object[capacity];
     }
@@ -26,16 +23,14 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public T set(int index, T newValue) {
-        Objects.checkIndex(index, size);
-        T oldValue = container[index];
+        T oldValue = get(index);
         container[index] = newValue;
         return oldValue;
     }
 
     @Override
     public T remove(int index) {
-        Objects.checkIndex(index, size);
-        T value;
+        T value = get(index);
         if (index == size - 1) {
             value = container[index];
             container[index] = null;
@@ -69,11 +64,13 @@ public class SimpleArrayList<T> implements SimpleList<T> {
         container = Arrays.copyOf(container, container.length * 2 + 1);
     }
 
+
     @Override
     public Iterator<T> iterator() {
-        this.point = 0;
-        this.expectedModCount = modCount;
         return new Iterator<T>() {
+
+            private int point = 0;
+            private int expectedModCount = modCount;
 
             @Override
             public boolean hasNext() {
