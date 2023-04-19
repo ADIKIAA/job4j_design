@@ -20,7 +20,7 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
             while (temp.next != null) {
                 temp = temp.next;
             }
-            temp.setNext(new Node<>(value, null));
+            temp.next = new Node<>(value, null);
         }
         size++;
         modCount++;
@@ -70,10 +70,6 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
 
         Node(E item, Node<E> next) {
             this.item = item;
-            this.next = next;
-        }
-
-        public void setNext(Node<E> next) {
             this.next = next;
         }
     }
