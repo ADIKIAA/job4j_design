@@ -6,7 +6,6 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class ForwardLinked<T> implements Iterable<T> {
-
     private int size = 0;
     private int modCount = 0;
     private Node<T> head;
