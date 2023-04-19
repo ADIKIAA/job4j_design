@@ -32,10 +32,8 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     public T remove(int index) {
         T value = get(index);
         if (index == size - 1) {
-            value = container[index];
             container[index] = null;
         } else {
-            value = container[index];
             System.arraycopy(
                     container,
                     index + 1,
@@ -84,9 +82,6 @@ public class SimpleArrayList<T> implements SimpleList<T> {
             public T next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
-                }
-                if (expectedModCount != modCount) {
-                    throw new ConcurrentModificationException();
                 }
                 return container[point++];
             }
