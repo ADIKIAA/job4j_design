@@ -1,7 +1,6 @@
 package ru.job4j.generics;
 
 public class UserStore implements Store<User> {
-
     private final Store<User> store = new MemStore<>();
 
     @Override
