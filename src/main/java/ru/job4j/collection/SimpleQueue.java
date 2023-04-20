@@ -14,18 +14,15 @@ public class SimpleQueue<T> {
        if (sizeIn == 0) {
            throw new NoSuchElementException("Queue is empty");
        }
-       while (sizeIn != 0) {
-           out.push(in.pop());
-           sizeIn--;
-           sizeOut++;
+       if (sizeOut == 0) {
+           while (sizeIn != 0) {
+               out.push(in.pop());
+               sizeIn--;
+               sizeOut++;
+           }
        }
        T temp = out.pop();
        sizeOut--;
-       while (sizeOut != 0) {
-           in.push(out.pop());
-           sizeOut--;
-           sizeIn++;
-       }
        return temp;
     }
 
