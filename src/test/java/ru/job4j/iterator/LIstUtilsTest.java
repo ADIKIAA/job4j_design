@@ -3,9 +3,7 @@ package ru.job4j.iterator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.*;
-import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
-
 import static org.assertj.core.api.Assertions.*;
 
 class ListUtilsTest {
