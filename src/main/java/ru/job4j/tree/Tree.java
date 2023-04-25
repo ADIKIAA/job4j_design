@@ -10,6 +10,8 @@ public interface Tree<E> {
 
     Optional<Node<E>> findBy(E value);
 
+    Boolean isBinary();
+
     class Node<E> {
 
         final E value;
