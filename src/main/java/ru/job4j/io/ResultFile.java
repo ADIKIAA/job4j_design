@@ -1,26 +1,26 @@
 package ru.job4j.io;
 
 import java.io.FileOutputStream;
-import java.util.Arrays;
 
 public class ResultFile {
 
-    public static int[][] multiple(int size) {
-        int[][] array = new int[size][size];
-        for (int row = 0; row < size; row++) {
-            for (int cell = 0; cell < size; cell++) {
-                array[row][cell] = (row + 1) * (cell + 1);
-            }
-        }
-        return array;
-    }
-
     public static void main(String[] args) {
         try (FileOutputStream out = new FileOutputStream("data/dataresult.txt")) {
-            for (int[] i : ResultFile.multiple(9)) {
-                out.write(Arrays.toString(i).getBytes());
-                out.write(System.lineSeparator().getBytes());
-            }
+            out.write("1 * 2 = 2".getBytes());
+            out.write(System.lineSeparator().getBytes());
+            out.write("1 * 3 = 3".getBytes());
+            out.write(System.lineSeparator().getBytes());
+            out.write("1 * 4 = 4".getBytes());
+            out.write(System.lineSeparator().getBytes());
+            out.write("1 * 5 = 5".getBytes());
+            out.write(System.lineSeparator().getBytes());
+            out.write("1 * 6 = 6".getBytes());
+            out.write(System.lineSeparator().getBytes());
+            out.write("1 * 7 = 7".getBytes());
+            out.write(System.lineSeparator().getBytes());
+            out.write("1 * 8 = 8".getBytes());
+            out.write(System.lineSeparator().getBytes());
+            out.write("1 * 9 = 9".getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
