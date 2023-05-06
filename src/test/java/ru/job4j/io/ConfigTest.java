@@ -16,28 +16,34 @@ class ConfigTest {
 
     @Test
     void whenPairWithoutKey() {
-        String path = "./data/app_with_comments_and_spaces.properties";
+        String path = "./data/app_without_key.properties";
         Config config = new Config(path);
-        config.load();
-        assertThatThrownBy(() -> config.value("h"))
+        assertThatThrownBy(() -> config.load())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void whenPairWithoutValue() {
-        String path = "./data/app_with_comments_and_spaces.properties";
+        String path = "./data/app_without_value.properties";
         Config config = new Config(path);
-        config.load();
-        assertThatThrownBy(() -> config.value("hibernate.connection.driver_class"))
+        assertThatThrownBy(() -> config.load())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void whenPairWithTwoEquals() {
-        String path = "./data/app_with_comments_and_spaces.properties";
+        String path = "./data/app_with_two_equal.properties";
         Config config = new Config(path);
         config.load();
-        assertThat(config.value("hibernate.connection.user"))
-                .isEqualTo("word=1234");
+        assertThat(config.value("hibernate.dialect"))
+                .isEqualTo("org.hibernate.dialect.Postgre=SQLDialect");
+    }
+
+    @Test
+    void whenPairWithoutEqual() {
+        String path = "./data/app_without_equal.properties";
+        Config config = new Config(path);
+        assertThatThrownBy(() -> config.load())
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
