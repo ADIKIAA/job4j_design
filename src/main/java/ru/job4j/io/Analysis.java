@@ -12,10 +12,9 @@ public class Analysis {
             boolean check = true;
             while ((str = in.readLine()) != null) {
                 status = !str.startsWith("400") && !str.startsWith("500");
-                if (!status && check) {
-                    out.print(str.substring(3) + "; ");
-                } else if (status && !check) {
-                    out.print(str.substring(3) + "; " + "\n");
+                if (status != check) {
+                    out.print(str.substring(4));
+                    out.print(check ? "; " : "; \n");
                 }
                 check = status;
             }
