@@ -10,8 +10,10 @@ import java.util.function.Predicate;
 public class Search {
 
     public static void main(String[] args) throws IOException {
-        Path start = Paths.get(".");
-        search(start, p -> p.toFile().getName().endsWith(".js")).forEach(System.out::println);
+        validate(args);
+        Path start = Paths.get(args[0]);
+        String extension = args[1];
+        search(start, p -> p.toFile().getName().endsWith(extension)).forEach(System.out::println);
 
     }
 
@@ -19,5 +21,17 @@ public class Search {
         SearchFiles searcher = new SearchFiles(condition);
         Files.walkFileTree(root, searcher);
         return searcher.getPaths();
+    }
+
+    public static void validate(String[] args) {
+        if (args.length != 2) {
+            throw new IllegalArgumentException("Set the start folder and extension of file in arguments");
+        }
+        if (!Files.isDirectory(Paths.get(args[0]))) {
+            throw new IllegalArgumentException("Set start fold");
+        }
+        if (!args[1].startsWith(".")) {
+            throw new IllegalArgumentException("Extension should start with \".\"");
+        }
     }
 }
