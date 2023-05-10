@@ -15,7 +15,7 @@ public class ArgsName {
         return values.get(key);
     }
 
-    private void parse(String[] args) {
+    private void validate(String[] args) {
         for (String s : args) {
             if (!s.startsWith("-")) {
                 throw new IllegalArgumentException(String.format("Error: This argument '%s' does not start with a '-' character", s));
@@ -30,6 +30,10 @@ public class ArgsName {
                 throw new IllegalArgumentException(String.format("Error: This argument '%s' does not contain a value", s));
             }
         }
+    }
+
+    private void parse(String[] args) {
+        validate(args);
         String[] temp;
         for (String s : args) {
             temp = s.substring(1).split("=", 2);
