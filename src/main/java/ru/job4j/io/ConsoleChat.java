@@ -28,9 +28,6 @@ public class ConsoleChat {
         List<String> answers = readPhrases();
         List<String> log = new ArrayList<>();
         Scanner in = new Scanner(System.in);
-        int min = 1;
-        int max = 15;
-        int i = (int) (Math.random() * (max - min) + min);
         String answer = "Введите запрос: ";
         String question;
         System.out.println(answer + "\n");
