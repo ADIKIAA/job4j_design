@@ -1,12 +1,12 @@
 package ru.job4j.io;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 public class ArgsName {
 
-    public final Map<String, String> values = new HashMap<>();
+    public final Map<String, String> values = new LinkedHashMap<>();
 
     public String get(String key) {
         if (!values.containsKey(key)) {
