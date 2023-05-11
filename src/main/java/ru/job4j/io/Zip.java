@@ -4,7 +4,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.ZipEntry;
@@ -12,15 +11,12 @@ import java.util.zip.ZipOutputStream;
 
 public class Zip {
 
-    private static void validate(List<String> args) {
+    private static void validate(Map<String, String> args) {
         if (args.size() != 3) {
             throw new IllegalArgumentException("Set all arguments");
         }
-        if (!Files.exists(Paths.get(args.get(0)))) {
-            throw new IllegalArgumentException(String.format("This folder '%s' does not exist", args.get(0)));
-        }
-        if (!args.get(1).startsWith(".")) {
-            throw new IllegalArgumentException(String.format("This extension '%s' uncorrected", args.get(1)));
+        if (!Files.exists(Paths.get(args.get("d")))) {
+            throw new IllegalArgumentException(String.format("This folder '%s' does not exist", args.get("d")));
         }
     }
 
@@ -57,13 +53,9 @@ public class Zip {
 
         Zip zip1 = new Zip();
         Map<String, String> arguments = ArgsName.of(args).values;
-        List<String> values = new ArrayList<>();
-        for (Map.Entry<String, String> e : arguments.entrySet()) {
-            values.add(e.getValue());
-        }
-        validate(values);
-        List<Path> files = Search.search(Paths.get(values.get(0)),
-                (e -> !e.toFile().getName().endsWith(values.get(1))));
-        zip1.packFiles(files, Paths.get(values.get(2)).toFile());
+        validate(arguments);
+        zip1.packFiles(
+                Search.search(Paths.get(arguments.get("d")), (p -> !p.toString().endsWith(arguments.get("e")))),
+                Paths.get(arguments.get("o")).toFile());
     }
 }
