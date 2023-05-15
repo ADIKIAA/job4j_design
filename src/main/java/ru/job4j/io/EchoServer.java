@@ -15,10 +15,21 @@ public class EchoServer {
                     out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     String str = in.readLine();
                     System.out.println(str);
-                    if (str.contains("?msg=Bye")) {
-                        server.close();
+                    str = str.substring(str.indexOf('=') + 1, str.lastIndexOf(' '));
+                    switch (str) {
+                        case "Hello" :
+                            System.out.println("Hello");
+                            break;
+                        case "Exit" :
+                            server.close();
+                            break;
+                        case "What" :
+                            System.out.println("What");
+                            break;
+                        default:
+                            System.out.println(str);
+                            break;
                     }
-
                     out.flush();
                 }
             }
