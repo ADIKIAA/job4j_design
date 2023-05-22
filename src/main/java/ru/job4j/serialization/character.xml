@@ -1,0 +1,10 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<Characteristic bool="ture" i="372">
+    <chars>
+        <char>3</char>
+        <char>2</char>
+        <char>1</char>
+    </chars>
+    <contact zipCode="477" phone="8-800-999" />
+    <string>line</string>
+</Characteristic>
