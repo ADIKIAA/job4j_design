@@ -2,17 +2,30 @@ package ru.job4j.serialization;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Arrays;
 
+@XmlRootElement(name = "Characteristic")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Characteristic implements Serializable {
 
+    @XmlAttribute
     private boolean bool;
+
+    @XmlAttribute
     private int i;
+
+    @XmlElementWrapper(name = "chars")
+    @XmlElement(name = "char")
     private char[] chars;
     private Contact contact;
+
+    @XmlAttribute
     private String string;
+
+    public Characteristic() {
+    }
 
     public Characteristic(boolean bool, int i, char[] chars, Contact contact, String string) {
         this.bool = bool;
