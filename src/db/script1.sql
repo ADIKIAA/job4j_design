@@ -1,14 +1,14 @@
+create table engines(
+    id serial primary key,
+    model int,
+    yearOfRealease date
+);
+
 create table carModels(
     id serial primary key,
     model int,
     yearOfRelease date,
     engine_id int references engines(id)
-);
-
-create table engines(
-    id serial primary key,
-    model int,
-    yearOfRealease date
 );
 
 insert into carModels(model, yearOfRelease, engine_id) values (3456, 10/02/1979, 1);
@@ -48,17 +48,18 @@ insert into banks_clients(bank_id, client_id) values (2, 2);
 
 
 
+create table drivers(
+    id serial primary key,
+    name varchar(255),
+    passport int
+);
+
 create table licenses(
     id serial primary key,
     driver_id int references drivers(id) unique,
     numberseria int
 );
 
-create table drivers(
-    id serial primary key,
-    name varchar(255),
-    passport int
-);
 
 insert into licenses(driver_id, numberseria) values (1, 123645);
 insert into drivers(name, passport) values ('Ivan', 6523645);
