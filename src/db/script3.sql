@@ -31,6 +31,8 @@ values ('Молоко 3.2%', 2, '12/06/23', 94.67);
 
 insert into product(name, type_id, expired_date, price)
 values ('Колбаса докторская', 3, '01.12.22', 278.71);
+insert into product(name, type_id, expired_date, price)
+values ('Колбаса копченая', 3, '13.12.22', 425.68);
 
 insert into product(name, type_id, expired_date, price)
 values ('Мороженное шоколадное', 4, '23/10/23', 67.12);
@@ -49,8 +51,8 @@ select * from product where name like '%Мороженное%';
 
 select * from product where expired_date < current_date;
 
-select t.name, max(price) from product p join type t on (p.type_id = t.id)
-group by t.name;
+select * from product
+where price = (select max(price) from product);
 
 select t.name, count(*) from type t join product p on (t.id = p.type_id) 
 group by t.name;
