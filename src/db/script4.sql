@@ -61,7 +61,7 @@ insert into teens(name, gender) values ('Artem', true);
 insert into teens(name, gender) values ('Anna', false);
 
 select * from teens t1 cross join (select * from teens) t2
-where t1.gender != t2.gender;
+where t1.gender != t2.gender and t1.id >= t2.id;
 
 
 
