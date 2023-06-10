@@ -28,7 +28,7 @@ insert into products (name, count, price) VALUES ('product_19', 19, 95);
 insert into products (name, count, price) VALUES ('product_20', 20, 100);
 
 start transaction;
-declare cursor_pr for select * from products;
+declare cursor_pr cursor for select * from products;
 move last cursor_pr from cursor_pr;
 move backward 6 from cursor_pr;
 fetch from cursor_pr;
