@@ -95,16 +95,16 @@ public class TableEditor implements AutoCloseable {
         Properties config = new Properties();
         try (InputStream in = TableEditor.class.getClassLoader().getResourceAsStream("app.properties")) {
             config.load(in);
+            TableEditor tableEditor = new TableEditor(config);
+            tableEditor.createTable("tableTest");
+            System.out.println(tableEditor.getTableScheme("tableTest"));
+            tableEditor.addColum("tableTest", "first_name", "text");
+            System.out.println(tableEditor.getTableScheme("tableTest"));
+            tableEditor.renameColum("tableTest", "first_name", "name");
+            System.out.println(tableEditor.getTableScheme("tableTest"));
+            tableEditor.dropColum("tableTest", "name");
+            System.out.println(tableEditor.getTableScheme("tableTest"));
+            tableEditor.dropTable("tableTest");
         }
-        TableEditor tableEditor = new TableEditor(config);
-        tableEditor.createTable("tableTest");
-        System.out.println(tableEditor.getTableScheme("tableTest"));
-        tableEditor.addColum("tableTest", "first_name", "text");
-        System.out.println(tableEditor.getTableScheme("tableTest"));
-        tableEditor.renameColum("tableTest", "first_name", "name");
-        System.out.println(tableEditor.getTableScheme("tableTest"));
-        tableEditor.dropColum("tableTest", "name");
-        System.out.println(tableEditor.getTableScheme("tableTest"));
-        tableEditor.dropTable("tableTest");
     }
 }
